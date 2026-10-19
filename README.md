@@ -1,13 +1,43 @@
-# Advanced JavaScript Homework 01
+# JS Lightbox, Video & Form Demos
 
-## Overview
-This repository contains three tasks as part of the Advanced JavaScript course at GoIT Neoversity. Each task demonstrates different aspects of working with JavaScript, including DOM manipulation, event handling, local storage, and working with third-party libraries.
+A small collection of vanilla JavaScript demos covering image galleries, video playback state, and form persistence.
 
-### Task 1: Image Gallery
-Create an image gallery using the SimpleLightbox library to display images in a lightbox when clicked. This task involves setting up the project with npm, importing the library, and using ES6 modules.
+## Features
 
-### Task 2: Video Player
-Create a video player using the Vimeo Player API. The player should save the current playback time to local storage and resume from that time upon page reload. The lodash.throttle library is used to limit how often the time is saved.
+- **Image gallery** — renders a grid of images and opens them in a lightbox (`simplelightbox`) on click
+- **Video player** — embeds a Vimeo player, throttled-saves the current playback position to `localStorage`, and resumes from it on reload
+- **Feedback form** — persists email/message input to `localStorage` on every change (throttled), restores it on reload, and clears it on submit
 
-### Task 3: Feedback Form
-Create a feedback form that saves the user's input to local storage in real-time using lodash.throttle to limit updates. When the page is reloaded, the form should populate with the saved data, and the data should be cleared from local storage upon form submission.
+## Technology
+
+- Vanilla JavaScript (ES modules)
+- Vite build tooling
+- simplelightbox for the image lightbox
+- @vimeo/player for video embedding and playback events
+- lodash.throttle for rate-limiting storage writes
+- GitHub Actions workflow deploying the production build to GitHub Pages
+
+## Project structure
+
+```
+src/
+  01-gallery.html / 01-gallery.js   Image gallery with lightbox
+  02-video.html   / 02-video.js     Vimeo player with resume-on-reload
+  03-feedback.html/ 03-feedback.js  Form with localStorage persistence
+  css/
+  partials/header.html
+  index.html                        Links to all three demos
+```
+
+## Commands
+
+```
+npm install     # install dependencies
+npm run dev     # start the Vite dev server
+npm run build   # build for production (GitHub Pages base path)
+npm run preview # preview the production build
+```
+
+## Deployment
+
+Pushes to `main` trigger a GitHub Actions workflow that builds the project and deploys the `dist` output to the `gh-pages` branch for GitHub Pages.
